@@ -1,0 +1,23 @@
+{
+  "name": "react-adventure",
+  "version": "1.0.0",
+  "description": "This is React Adventure by Amit Vinchhi",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvinchhi4u/react-adventure.git"
+  },
+  "keywords": [],
+  "author": "Amit Vinchhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arvinchhi4u/react-adventure/issues"
+  },
+  "homepage": "https://github.com/arvinchhi4u/react-adventure#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  }
+}
