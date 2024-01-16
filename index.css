@@ -19,6 +19,7 @@
 
 .nav-items ul {
   display: flex;
+  align-items: baseline;
   font-size: 24px;
   list-style-type: none;
 }
@@ -70,8 +71,16 @@
 }
 
 .shimmer-card {
-  margin: 10px;
-  width: 200px;
+  margin: 5px;
+  width: 210px;
   height: 400px;
+  border: 1px solid #f0f0f0;
   background-color: #f0f0f0;
+
+}
+
+.btn-login {
+  margin: 0;
+  padding: 10px 20px;
+  cursor: pointer;
 }
