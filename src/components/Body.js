@@ -4,30 +4,15 @@ import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RES_API } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurant from "../utils/useRestaurant";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [listOfRestaurants, filteredRestaurants] = useRestaurant();
   const [searchText, setSerachText] = useState("");
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) return <h1>Looks like you're offline!! Please check your internet connection!</h1>;
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(RES_API);
-    const json = await data.json();
-
-    setListOfRestaurants(
-      // optional chaining
-      json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurants(
-      json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-
-  console.log(listOfRestaurants);
   // Conditional Rendering
   return !listOfRestaurants || listOfRestaurants.length === 0 ? (
     <Shimmer />
