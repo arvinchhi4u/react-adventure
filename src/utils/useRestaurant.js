@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { RES_API } from "./constants";
 
 const useRestaurant = () => {
-
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
@@ -13,11 +12,20 @@ const useRestaurant = () => {
   const fetchData = async () => {
     const data = await fetch(RES_API);
     const json = await data.json();
-    setListOfRestaurants(json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurants(
+      json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurants(
+      json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
-  return [listOfRestaurants, filteredRestaurants];
+  return [
+    listOfRestaurants,
+    setListOfRestaurants,
+    filteredRestaurants,
+    setFilteredRestaurants,
+  ];
 };
 
 export default useRestaurant;
