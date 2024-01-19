@@ -1,16 +1,12 @@
-import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({data}) => {
+const RestaurantCategory = ({data, showItems, setShowIndex}) => {
   const { itemCards } = data;
 
-  const [showItems, setShowItems] = useState(false);
-  const [toggleArrow, setToggleArrow] = useState("🔽");
-
+  const toggleArrow = showItems ? "🔼" : "🔽";
 
   const handleCLick = () => {
-    setShowItems(!showItems);
-    setToggleArrow(showItems ? "🔽" : "🔼");
+    setShowIndex();
   };
 
   return (
