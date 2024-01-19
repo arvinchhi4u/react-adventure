@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantCard, { withTopRatedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { RES_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurant from "../utils/useRestaurant";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [
@@ -16,6 +16,8 @@ const Body = () => {
   ] = useRestaurant();
   const [searchText, setSerachText] = useState("");
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   const RestaurantCardTopRated = withTopRatedLabel(RestaurantCard);
 
@@ -65,6 +67,19 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="m-4 p-4">
+          <div className="my-4 py-2">
+            <span className="inline-block px-2 font-bold">Username</span>
+            <input
+              type="text"
+              className="border border-solid border-black"
+              value={loggedInUser}
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className="flex flex-wrap justify-center">

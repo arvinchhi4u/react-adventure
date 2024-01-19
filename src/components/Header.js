@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LogoImage from "../../assets/images/fast-food-logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+  const { loggedInUser } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
@@ -30,6 +32,9 @@ const Header = () => {
           </li>
           <li className="px-4 hover:text-rose-600">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4 font-bold">
+            { loggedInUser }
           </li>
           <li className="px-4 hover:text-rose-600">
             <button
