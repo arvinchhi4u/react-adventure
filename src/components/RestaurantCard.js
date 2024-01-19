@@ -26,4 +26,19 @@ export const RestaurantCard = (props) => {
   );
 };
 
+// Higher Order Component (HOC)
+// RestaurantCrad => RestaurantCardBestSeller
+
+export const withTopRatedLabel = (RestaurantCard) => {
+  return (props) => {
+    return(
+      <div className="relative">
+        <label className="absolute top-0 left-0 ml-4 py-1 px-3 bg-rose-500 font-bold text-white rounded-br-2xl">Top Rated</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
+

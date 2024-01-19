@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withTopRatedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RES_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -16,6 +16,9 @@ const Body = () => {
   ] = useRestaurant();
   const [searchText, setSerachText] = useState("");
   const onlineStatus = useOnlineStatus();
+
+  const RestaurantCardTopRated = withTopRatedLabel(RestaurantCard);
+
   if (onlineStatus === false)
     return (
       <h1>
@@ -70,7 +73,11 @@ const Body = () => {
             to={"/restaurants/" + restaurant.info.id}
             key={restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.avgRating >= 4.5 ? (
+              <RestaurantCardTopRated resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
