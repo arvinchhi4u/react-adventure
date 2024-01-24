@@ -1,3 +1,6 @@
+export const LOGO_URL =
+  "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/7820966/fast-food-clipart-md.png";
+
 export const CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import LogoImage from "../../assets/images/fast-food-logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import { LOGO_URL } from "../utils/constants";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -13,12 +13,11 @@ const Header = () => {
 
   // Subscribing to the store using a Selector
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
 
   return (
     <div className="flex justify-between items-center bg-pink-100 p-5 shadow-lg sm:bg-yellow-100 md:bg-blue-100 lg:bg-green-100">
       <div className="logo-container">
-        <img className="w-12" src={LogoImage} alt="Company Logo" />
+        <img className="w-12" src={LOGO_URL} alt="Company Logo" />
       </div>
       <div className="nav-items">
         <ul className="flex">
@@ -38,9 +37,7 @@ const Header = () => {
           <li className="px-4 hover:text-rose-600">
             <Link to="/cart">Cart ({cartItems.length} items)</Link>
           </li>
-          <li className="px-4 font-bold">
-            { loggedInUser }
-          </li>
+          <li className="px-4 font-bold">{loggedInUser}</li>
           <li className="px-4 hover:text-rose-600">
             <button
               className="btn-login"
