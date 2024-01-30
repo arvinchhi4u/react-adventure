@@ -13,14 +13,12 @@ const useRestaurant = () => {
     const data = await fetch(RES_API);
     const json = await data.json();
 
-    gridWidgets = json?.data?.cards.filter((card) => {
+    const gridWidgets = json?.data?.cards.filter((card) => {
       return (
         card?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget"
       );
     });
-
-    console.log(gridWidgets)
 
     setListOfRestaurants(
       gridWidgets[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants

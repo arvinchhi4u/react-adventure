@@ -7,7 +7,7 @@ export const RestaurantCard = (props) => {
   const { deliveryTime } = resData?.info.sla;
 
   return (
-    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
+    <div data-testid="resCard" className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
       <div className="res-logo-container">
         <img
           src={CDN_URL + cloudinaryImageId}

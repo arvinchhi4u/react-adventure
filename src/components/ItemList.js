@@ -16,6 +16,7 @@ const ItemList = ({ items }) => {
         <div
           key={item.card?.info?.id}
           className="flex m-2 p-2 border-b border-gray-200"
+          data-testid="foodItems"
         >
           <div className="relative w-2/12 h-auto">
             <img
